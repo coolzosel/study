@@ -1,0 +1,57 @@
+/*학생, 교수, 학과 테이블 생성*/
+
+create table department (
+    num number not null,
+    name varchar(15),
+    position varchar(10),
+    cal varchar(15),
+    primary key(num)
+);
+
+            
+create table professor(
+    num number not null,
+    name varchar(10),
+    pay number, 
+    dpcode number,
+    rank_ varchar(10),
+    pdate date,
+    primary key(num)
+);
+
+
+create table student(
+    num number not null,
+    name varchar(10),
+    age number,
+    height number,
+    grade number check(grade in(1,2,3,4,5,6)),
+    id varchar(10),
+    jumin char(14),
+    cal varchar(13),
+    dep number,
+    pf number,
+    math number,
+    eng number,
+    primary key(num),
+    foreign key(dep) references department(num),
+    foreign key(pf) references professor(num)
+);
+
+insert into department values (1,'시각디자인학과','5관101호','02-5212-0312');
+insert into department values (2,'컴퓨터공학과','3관201호','010-7300-0502');
+insert into department values (3,'사회복지학과','2관101호','02-6392-0955');
+insert into department values (4,'수학과','1관302호','010-6695-8547');
+insert into department values (5,'국어국문학과','4관102호','02-1004-1234');
+
+select * from department; -- -------------------------------------------------------------------학과 데이터 입력 완료
+
+select * from professor;
+insert into professor values (1,'김멍멍',3500,1,'부교수','1999-03-13'); -- 문자처럼 따옴표 입력 후 하이픈
+insert into professor values (2,'권야옹',5100,2,'정교수','1998-02-05');
+insert into professor values (3,'이개굴',4100,3,'부교수','2010-10-26');
+insert into professor values (4,'박음메',2850,4,'조교수','2001-08-17');
+insert into professor values (5,'김꿀꿀',3700,5,'부교수','2003-01-08'); -- -----------------------교수 데이터 입력 완료
+
+select * from student;
+insert into 

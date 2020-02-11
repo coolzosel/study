@@ -1,6 +1,8 @@
+>>단축키와 사이트는 맨 아래에 정리되어 있음<<
+
 20.02.10
 
->>html
+★html★
 
 vs code 설치(visual studio code)
 > 깔고 나서 2가지의 부가기능 설치 / 한국어 패치, 라이브 서버(live server)
@@ -8,6 +10,8 @@ vs code 설치(visual studio code)
 태그는 시작과 끝이 존재하며 괄호로 둘러싸여있음. 그 사이에 글자를 넣음
 >>시작과 끝이 존재하지 않고 단독으로 있는 태그는 빈 태그라고 부름
 
+
+**태그와 속성**
 <h1></h1> : headline, 제목태그이며 h6까지 있음
 <hr> : 빈 태그, 호라이즌의 약자. 수평으로 줄이 생기는 기능
 <br> : 빈 태그이며, 브레이크의 약자. 줄 바꿈하는 기능
@@ -19,6 +23,48 @@ vs code 설치(visual studio code)
 <title></title> : 타이틀 태그. 탭의 제목에 뜨는 타이틀을 나타냄.
 lorem : 텍스트
 
+* vs code의 장점은 깃 기능이 내장되어 있음.
+
+
+
+
+
+20.02.11
+
+<img src="이미지링크"> : 이미지 태그
+
+**리스트 태그**
+<ul></ul> : unordered list의 약자, 순서가 없는 리스트
+<ol></ol> : ordered list의 약자, 순서가 있는 리스트
+<dl></dl> : define list의 약자, 정의 리스트. 무언가를 정의하고 설명하기 위한 리스트
+<dt></dt> : define term / 정의할 용어
+<dd></dd> : define description / 용어에 대한 설명
+<li></li> : 리스트(내용)
+
+**테이블태그+속성 설명**
+<table></table>
+<caption></caption> : 캡션은 테이블에 반드시 첫 번째로 삽입 (제목 개념)
+<thead></thead>: table head
+<tr></tr> : table row의 약자 row=행, 하나의 tr는 하나의 행이 된다(가로)
+<th></th> : table headline, 강조 표시
+<tbody></tbody> : table body
+<td></td>: table data의 약자, 티헤드의 th과 갯수가 맞아야 함
+<tfoot></tfoot> : table foot의 약자, 안에는 강조하기 위해 td가 아닌 th를 사용
+<table border="n"> : border라는 속성은 외곽선을 보이게 하는 속성. n에다가 원하는 굵기의 숫자를 넣는다.
+<th colspan="n"> : column span의 약자. 가로길이, 열을 하나로 늘린다. 좌우로 n만큼 합친다
+<th rowsplan="n"> : row span의 약자. 세로길이, 행을 하나로 늘린다. 위아래로 n만큼 합친다 // 콜스판과 로우스판 다시 이해해보기... ....ㅡㅡㅠ
+**
+
+<a href="URL"></a> : 앵커(anchor, 닻). 일종의 책갈피 역할, URL을 넣어서 페이지 내부에서 이동을 하는 태그
+<a href="URL" target="_self"></a> : target 속성. 링크에 연결된 HTML이 출력될 윈도우 창 지정. 기본 값은 "_self" 새 창으로 띄우는 건 "_blank"(=빈 공간이란 뜻)
+download="" : 다운로드 속성이며, 속성 값을 다운로드함.
+<h3 id="test">앵커</h3> : id 속성 지정. 
+<a href="#test">앵커로 이동</a> : "#id값" = 아이디 값이 표기된 곳으로 이동. / 책갈피 기능
+iframe : 유튜브로 가서 해당 영상의 공유-퍼가기 클릭하면 아이프레임값이 뜸. 긁어다가 입력하면 영상이 가져와짐.
+
+
+
+
 
 <이론 수업> - 세 줄 요약
 첫 번째. 웹과 인터넷은 다르다.
@@ -27,14 +73,49 @@ lorem : 텍스트
 웹 페이지에 어떤 꾸미는 것, 배치하는 것을 설정하는 CSS. 
 마지막으로 웹의 동작이나 응용 프로그램 같은 것을 추가할 수 있는 자바스크립트. 이 세 가지로 현재 웹이 구성되고 있다. 
 
+
+
+
+
+
+
+
+
 **단축키
 ctrl+L, ctrl+O = 라이브서버
 ctrl + / = 주석단축키
 alt+방향키 = 현재 위치하고 있는 줄을 통째로 이동
-alt+shift+방향키 = 현재 위치하고 있는 줄을 복붙하며 이동
+alt+shift+방향키 = 현재 위치하고 있는 줄을 생성하며 이동
+ctrl+shift+k = 현재 위치하고 있는 줄 삭제
 tap = 오른쪽으로 줄 맞춤
 tap + shift = 왼쪽으로 줄 맞춤
 ctrl+B = 왼쪽 바 on/off
 ctrl+` = 터미널 창 on/off
+table>thead+tbody = 테이블에 속해있는 티헤드와 티바디 코드 생성 ( 다른 것도 만들기 가능 )
 
-vs code의 장점은 깃 기능이 내장되어 있음.
+
+
+**사이트
+
+>무료 이미지
+https://pixabay.com/ko/
+
+>vscode 단축키
+https://demun.github.io/vscode-tutorial/shortcuts/
+
+*레퍼런스 참고사이트들************************************************************
+1>웹의 표준을 관리, 관련 기술 정립하는 단체(W3)가 운영하는 사이트 (영어/무료)
+https://www.w3schools.com/
+
+2>모질라 재단에서 만든 웹 표준 사이트 (한글도 나오지만 영어도 나옴/무료)
+https://developer.mozilla.org/ko/
+
+3>tcp스쿨 (한글/유료)
+http://tcpschool.com/
+
+4>오브코스 (핵심적인 내용/치트시트)
+https://ofcourse.kr/
+
+5>포에마웹 (기능 단위로 정리되어 있음)
+https://poiemaweb.com/
+**************************************************************************************

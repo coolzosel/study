@@ -150,8 +150,8 @@ CSS의 속성은 프로퍼티 property
 
 *선택자(selector)의 종류
 -태그 선택자 : 태그이름{ }
--아이디 선택자 : 샵 붙이기 (Ex)#myid{ }
--클래스 선택자 : 닷 붙이기 (Ex).myclass{ }
+-아이디 선택자 : 샵 붙이기 (Ex)#myid{ } // 1:1 (하나의 아이디에 한 요소, 하나의 요소에 하나의 아이디)
+-클래스 선택자 : 닷 붙이기 (Ex).myclass{ } // n:m (한 요소가 여러 클래스를 넣을 수 있고 한 클래스가 여러 요소에 들어갈 수 있다)
 -그룹 선택자 : 중복되는 내용 있으면 갖고와서 일괄 적용 가능. (Ex)div, span, #pId, .newClass{ }
 >적용순:인라인스타일>아이디선택자>클래스선택자>태그선택자 
 ※만일 위의 순서를 다 무시하고 스타일을 나타내게 하고 싶다 = 프로퍼티 뒤의 밸류 뒤에 !improtant 붙이면 작동!(Ex)color : red !important ;
@@ -185,14 +185,14 @@ background : url(이미지링크) red fixed top right no-repeat; : 위의 백그라운드 설
 
 20.02.14
 
-*스타일 프로퍼티
+*스타일 프로퍼티 → 프로퍼티의 값(value)은 '선언부', 세미콜론(;)은 '구분자'라고 함
 background-size: contain; // 배경 이미지의 크기 변경. 값은 contain, cover가 있으며 px % 등으로도 지정 가능
 >contain은 짧은 면을 기준으로 사이즈 변경(이미지가 다 보이게), cover는 긴 면을 기준으로 사이즈 변경(사진 잘릴 수 있음)
 >px는 길이(좌표), %는 출력되는 이미지에서 차지하는 비율(퍼센트) // EX.50% 지정해주면 이미지가 2장만 나옴(20%면 5장의 이미지 출력)
 background-image: linear-gradien(to top left, 색1, 색2, 색3, 색4); // 괄호 안의 첫번째 값은 방향, 그 이후의 값부터는 출력되는 색상 값 입력.
 >방향은 to ____ ____ (top, bottom, left, right 하나만 입력해도 되고 원하는 방향에 따라 조합)과 __deg(각도, 숫자를 입력)가 있음
 >>linear - 선형 / circle - 원형
-font-size: ___px; // 폰트 사이즈 변경, 단위는 px
+font-size: ___px; // 폰트 사이즈 변경, 단위는 px, %, em
 font-family: "___"; // 글씨체 지정
 font-style: italic; // 폰트 기울기 적용
 font-weight: bold; // 폰트 굵게 적용
@@ -216,7 +216,8 @@ vertical-align: ___; //수직 정렬. 값은 top, buttom, middle (위아래로만 정렬, tr�
 *크기 조정(밑의 속성들은 div에 적용한 것들)
 width:__px; height:__px; // 픽셀을 기준으로 하는 절대적 크기
 width:__%; height:__%; // %를 통한 크기 조정, 퍼센트 속성은 가로는 적용되지만 세로가 안될 때가 있다 > 이런 경우, 부모 요소가 아무런 길이를 갖고 있지 않은 경우.
-
+width:__em; height:__em; // em을 통한 크기 조정, em = 폰트 크기의 배수 단위
+width:__rem;, height:__rem; // em을 통한 크기 조정의 단점 보완한 rem.
 
 
 
@@ -227,6 +228,56 @@ https://webdir.tistory.com/340
 *태그
 <ul><li></li></ul> : <ul>를 부모태그(요소), <li>를 자식태그(요소)라고 함. 상속관계 (부모->자식) ∴ 스타일 적용 시 같이 적용됨
 스타일 상속 참고 사이트 : https://poiemaweb.com/css3-inheritance-cascading
+
+
+
+
+
+20.02.17
+
+*스타일 프로퍼티
+min-width:__; // 최소 크기, 이것보다 더 작게 안하고 싶다. 
+max-width: __; // 최대 크기, 이거보다 더 크게 안하고 싶다.
+>>단위는 px, 부모에 따라서 바뀌는 크기, 상대크기를 가졌을 경우에도 민하이트, 맥스하이트가 지정될 수 있다는 것
+border-style: _____; // 외곽선 스타일 값(선언부): dotted(점선), dashed(좀 더 긴 점선), double(두 줄)
+border-width: __px; // 외곽선 두께
+border-width: 1px 2px 4px 8px; // 상-우-하-좌 외곽선 두께를 위치별로 설정 가능
+border-color: ___; //외곽선 색상
+border-color: __ __ __ __; // 상-우-하-좌 외곽선 색상을 위치별로 설정 가능
+border-___: 축약형; // ___에는 top, bottom, left, right가 들어갈 수 있으며 외곽선의 원하는 위치 지정. 그 뒤 value(값)에는 축약형으로 입력 가능
+(Ex.)border-top: 2px dashed red;
+border-style: solid dotted dashed double; // 상-우-하-좌 외곽선 스타일을 위치별로 설정 가능 
+border-color: ___ ___ ___; // 값을 3개만 입력할 경우, 상-좌우-하로 적용됨. (=border-color: x y x;)
+*이렇게 되는 이유? x축과 y축 기반으로 생각해서 보면 됨. 그렇다면 마찬가지로 값이 2개일 경우 상하(x), 좌우(y)가 되는 셈.
+border: width style color; //외곽선 축약형, ※ 다른 것은 생략해도 되나 스타일은 반드시 입력해야 함, 빠지면 축약형 선언 안 됨.
+border-radius: __; // 곡률, 외곽선 모서리 둥글기 지정. 값의 단위는 px, % // 50%까지가 max. 그 이후부턴 외관 상 티가 안남
+margin: __px; // 마진(여백), 단위는 px *퍼센트는 잘 안씀(비추)
+margin-___: 축약형; //  ___에는 top, bottom, left, right 입력, 마진 원하는 위치 지정. 그 뒤 value에는 축약형 입력
+margin: __ __ __ __; // 마진 축약형. 다른 것과 동일하게 3개, 2개 축약 버전도 입력 O
+margin: auto; //자동 정렬(마진을 좌우 똑같이 주는 것), 단 위아래는 안되고 좌우만 가능
+>>width를 div나 p같은 공간구분 태그에다 퍼센트(%)로 주면 브라우저에 따라 너비가 자동 조절됨
+padding: __px; // 안의 콘텐츠와 외곽선 사이의 여백. __만큼 값을 주면 상하좌우 다 여백이 생성됨
+padding-___: __px; // 프로퍼티의 ___에는 top, right, bottom, left 입력, 값의 __는 여백을 주고 싶은 만큼 입력.
+★(콘텐츠-패딩-보더)-마진 // 이렇게 4가지가 박스 모델의 구성. 괄호 안에 든 것만 크기로 산정, 마진은 테두리 외부이기때문에 산정X
+box-sizing: border-box; // 원하는 규격에 맞게 보더와 패딩을 빼고 콘텐츠를 구성하는 선언문. (border-box 사이즈가 200px이면 거기에 맞게 알아서 구성됨)
+
+*인라인 태그들은 width, height, margin-top, margin-bottom 프로퍼티 지정 안 됨(단, 이미지 제외) / 좌우 마진은 된다.
+*인라인 태그는 글자(텍스트)같은 개념으로 이해. 상하 여백을 주고 싶다면 line-height로 주기.
+display: inline-block; // 블록 태그를 인라인 태그로 인라인 태그를 블록 태그로 바꿔주는 것.(물리적 ㄴㄴ, 보여지는 영역 안에서만)
+display: none; // 출력을 안 하기
+visibility: hidden; // 출력하되, 숨기기(콘텐츠 공간은 있는데 콘텐츠가 안보이는 것)
+
+★position(포지션)
+position: static; // 정적 위치.
+position: relative;  // 상대 위치. 부모의 위치가 기준(왼쪽 위)
+position: absolute; // 절대 위치. 부모나 조상요소에게 상속받음, 앱솔루트를 쓸 땐 부모요소를 반드시 relative로 변환 ?? ? ? ? ? ?? ? ? ??? 하 뭐라는거지..
+>>앱솔루트는 스테틱을 따르지 않음. 부모가 스테틱이면 스테틱이 아닌 조상을 계속 찾아서 올라감. 바디까지 올라감.
+position: fixed; // 고정 위치, 아무한테도 상속받지 않음. 
+//(포지션은 다시 정리예정)
+
+float: ___; // 값에는 left, right 입력. 그림과 텍스트가 어울리도록 하는 기능. div에도 사용 가능함
+>>BUT, 근처에 있는 인라인 속성의 태그들을 끌어당김.(단점)
+
 
 
 
@@ -275,5 +326,7 @@ https://www.flaticon.com/
 >컬러헌트(색조합 참고/색상값들이 hex값으로 카피되어서 GOOD!)
 https://colorhunt.co/
 
+>색 블렌드모드 참고
+https://coderap.tistory.com/137
 
 *************************************************************************************

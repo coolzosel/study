@@ -307,6 +307,23 @@ transform: translate(x, y); // 현재의 위치를 기준으로 위치 변경하는 기능, 단위는
 
 
 
+20.02.19
+
+클래스 만들 때 자동완성 단축 기능 사용하려면 점을 이어서 만들어 주면 됨
+ex) div.col-sm-6.col-md-4.col-lg-2 라고 입력하면
+<div class="col-sm-6 col-md-4 col-lg-2"></div> 생성
+
+*부트스트랩 (모두 클래스를 기반으로 함)
+card / card-header / card-body / card-title / card-text / card-footer / card-img / card-link 
+card-columns : 수직으로 카드 정렬이 되며, 안에 내용을 채우면 위치가 바뀌는 카드 형태
+card-deck : 모든 카드가 일정한 너비를 가지는 형태
+card-group : deck과 비슷하나 카드 사이 여백이 없고 붙어있는 형태
+>>가변적이고 많은 내용을 넣어야 할 때는 컬럼, 3-4개의 확실한 카테고리 범주 내에서는 덱을 쓰는게 좋음
+navbar / navbar-dark / bg-dark / navbar-expand-md / navbar-brand(상단바의 로고 역할) / navbar-toggler(햄버거메뉴, on/off되는 메뉴)
+nav-item : 현재 페이지일 경우에는 뒤에 active(활성화) 클래스 추가, 아닐 경우는 아이템까지만.
+
+
+
 **단축키
 ctrl+L, ctrl+O = 라이브서버
 ctrl + / = 주석단축키

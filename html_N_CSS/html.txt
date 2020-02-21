@@ -340,6 +340,7 @@ let var1=1;
 >세미콜론(;)으로 문장 구분. 
 >"Hello World"나 let var1의 값 '1'은 literal(문자열/값)이라 함 
 >그 외의 앞의 console.log나 let var1는 식별자라고 함
+>자바 스크립트의 순서는 위에서 아래로 내려간다(★)
 개발자 도구(F12 or Ctrl+Shift+I)
 -실행 후, Console로 들어가면 테스트 해볼 수 있음
 
@@ -349,17 +350,21 @@ document.getElementById('아이디명').innerhtml='바꾸고자 하는 내용'
     <button onclick="document.getElementById('ex1').innerHTML='바꾸고자 하는 내용'">
         내용변경
     </button>
->>버튼을 누르면 (아이디값 'ex1'인) html안의 내용을 변경한다. (HTML 내용 변경)
+  >>버튼을 누르면 (아이디값 'ex1'인) html안의 내용을 변경한다. (HTML 내용 변경)
+
 (Ex2.)<div id="ex2">TEST</div>
     <button onclick="document.getElementById('ex2').classList.add('bold')">
         굵게
     </button>
->>버튼을 누르면 (아이디값 'ex2'인) 폰트에 bold 클래스가 적용된다 (HTML 속성 변경)
+  >>버튼을 누르면 (아이디값 'ex2'인) 폰트에 bold 클래스가 적용된다 (HTML 속성 변경)
+
 (Ex.3)div id="ex3">TEST</div>
     <button onclick="document.getElementById('ex3').style.visibility='hidden'">
         안보이게
     </button>
->>버튼을 누르면 (아이디값 'ex3'인) style클래스의 visibility 속성을 'hidden'으로 적용한다 (HTML 스타일 변경)
+  >>버튼을 누르면 (아이디값 'ex3'인) style클래스의 visibility 속성을 'hidden'으로 적용한다 (HTML 스타일 변경)
+
+*리터럴은 직접 표현되는 값 자체
 1234 // 숫자 리터럴
 'javascript' // 문자열 리터럴
 식별자는 자바스크립트 내에서 사용되는 이름을 의미
@@ -367,8 +372,9 @@ document.getElementById('아이디명').innerhtml='바꾸고자 하는 내용'
 >식별자는 숫자로 시작할수 없음
 자바스크립트는 대소문자를 구분
 자바스크립트 파일을 연결할 때는 body 태그의 마지막 부분에 연결 (Why? head태그에 넣어도 작동은 하나 느려짐)
-콘솔로그는 주석을 작성하라고 있는 것이 아니기 때문에 지저분하게 두지 말 것.
 ※ 이하 설명문에서 '_____'는 리터럴 값. 이 때, 리터럴 값은 숫자 리터럴, 문자열 리터럴 구분 없이 해당됨.
+console.log('_____'); // 개발자 도구 창에 출력
+>콘솔로그는 주석을 작성하라고 있는 것이 아니기 때문에 지저분하게 두지 말 것.
 alert('_____'); // 창을 띄워서 데이터 출력
 document.write('_____'); // 도큐멘트 작성(출력)하는 기능
 
@@ -393,6 +399,151 @@ document.write('_____'); // 도큐멘트 작성(출력)하는 기능
 이런 것들을 써주면 좋거든요. 여러분들이 지금 진행하고 있는 프로젝트 하나하나가 단순히 제가 여러분들 아는 걸 체크하고 혹은 
 여러분들한테 평가를 위해서 진행되는 것뿐만 아니라 여러분들이 이후에 자기소개서나 이력서를 작성을 할 때 좀 더 도움이 될 수 있게 진행된다는 것을 염두에 두시면 좋겠습니다.
 ★ 참고해서 각 프로젝트마다 느낀 점 주석 달아두기
+
+
+
+
+
+20.02.21
+
+*요구사항 정의서 (대략적으로 예시)
+<영화 리뷰사이트>
+-메인페이지:~~한 내용을 점보트론으로 강조, 이미지를 통한 영화목록 표시..
+-리뷰목록페이지:클릭하면 개별리뷰로 가지도록 각기 테이블 통해 구현
+-개별리뷰페이지
+-댓글기능, 추천기능
+-적용기술:html5, css3, js, git, 부트스트랩...등
+
+
+
+*변수와 상수
+var x; // x라는 변수 선언, var는 variable(변수)
+console.log(x); // 이 때, 변수 값을 지정안하고 출력하면 안 나옴
+x = 10; // x는 10이다. 값 지정 (=초기화)
+console.log(x); // 지정 후, 출력했을 때 정상 작동하는 것을 확인할 수 있음
+var y = 1; // 변수 선언과 초기화(값 지정) 동시에 하기
+var n = 10, m = 20; console.log(n,m); //여러 개를 지정해주고 싶을 땐 콤마로 구분
+>>똑같은 변수를 중복 지정해줘도 충돌이 안 남(디버깅 없음),
+(Ex.) var x =10; var x =20; // 마지막에 초기화한 값으로 남게 됨
+= 여기서 알 수 있는 것 : 기존 데이터 소실 위험 有. 이를 보완한 것이 let(아래에서 설명)
+var z = x + y ; // 응용해서 선언 가능
+**순서 : 선언 - 초기화 - 출력 (순서 무시하고 하면 작동 안됨)
+
+-let // 성경 중 let it light(태초에 빛이 있었다) ... 여기서 따와서 let = 새롭게 창조한다라는 의미
+let b = 15; let b = 30; // 같은 변수를 중복 지정했을 때 에러가 뜸, 단 초기화는 상관없이 가능함.
+*error : Identifier 'b' has already been declared = 식별자 'b'는 이미 변수로써 사용되고 있다.
+{
+    let b = 45;
+    console.log(b);
+} // 블록 안에 있는 b의 값이 출력됨 (블록 밖에 b가 있어도 블록 안에서 새로 선언 가능)
+
+const // constant variable(고정 변수), 한 번 선언&초기화하고 변경할 수 없는 수(상수)
+
+**가능 범위를 정리하자면
+-var : 중복 선언, 여러 번 초기화
+-let : 한 번 선언, 여러 번 초기화 
+-const : 한 번 선언, 한 번 초기화 
+
+
+*연산자와 타입
+
+연산자(Operator)
+-산술 연산자 : 더하기, 빼기, 곱하기, 나누기.. 기본적인 "계산하는 연산자"
+-대입 연산자 : 변수나 상수와 같은 위치에 "넣어주는 연산자"
+-복합 대입 연산자 : 산술+대입 연산자
+
+타입(type)
+-숫자형(number) : 자바스크립트에서는 int, float... 구분 없이 전부 'number'로 통일. 따로 타입 지정 안해도 알아서 됨
+-문자열(string) : 작은 따옴표('), 큰 따옴표("), 백틱(`). 기본적으로 작은따옴표 사용 권장, 백틱은 내용에 따옴표와 엔터 출력 가능
+>엔터 출력은 되나 줄바꿈이 안됨. 그래서 역슬래시(줄바꿈) 사용
+-불리언(boolean) : 참(true), 거짓(false)
+
+
+*연산자 
+※ 바로 확인할 수 있도록 콘솔로그로 출력함(예제에만 한함)
+
+>산술 연산자
+console.log(1 + 2); // 더하기
+console.log(3 - 4);  // 빼기
+console.log(6 * 2);  // 곱하기
+console.log(10 / 5);  // 나누기
+console.log(2020 % 10); // %(모듈러스) : 나머지 값
+console.log(2 ** 10); // **(제곱)
+console.log((1 + 2) * 3); // 괄호한 것 먼저 처리(계산)
+let a=10, b=15; console.log(a+b); // 변수도 연산자 계산 가능
+console.log('귀여운' + '고양이'); // 결합 연산자, 문자열들끼리 합쳐줌
+
+>증감 연산자 : 연산자 위치에 따라 출력 값 달라짐
+let c; 
+console.log(c++); // 출력하고 증감
+console.log(++c); // 증감후 출력
+
+>대입 연산자
+-복합대입연산자 : 산술과 대입을 한 번에 처리하도록 합친 연산자
+let x = 10; x += 1;
+console.log(x += 1);
+console.log(x -= 2);
+console.log(x *= 2);
+console.log(x /= 2);
+xonsole.log(x %= 5);
+
+>비교 연산자
+a == 10; // 같다
+a != b; // 다르다
+a > b; // b보다 크다
+a >= b; // b보다 크거나 같다
+a < b; // b보다 작다
+a <= b; // b보다 작거나 크다
+
+>타입을 알려주는 연산자
+console.log(typeof(피연산자)); 
+(Ex.)let x = 10, y = '10';
+     console.log(typeof(x), typeof(y));
+     console.log(x == y); // true
+= 원래 타입이 다르면 false가 떠야 하는데 자바스크립트에서는 자동변환해줌, 그래서 true가 나온 것
+     console.log(x === y); // false, 타입도 일치하는지 봄
+     console.log(x != y); // false, x(10)와 y(10)는 다르다 : 거짓
+     console.log(x !== y); // true x(10)와 y(10)은 다르다 : 참 (타입이 달라서)
+
+>논리 연산자
+let t = true, f = false;
+console.log('and', t && f);//false 두 피연산자 모두가 참이어야 참 (논리 AND 연산)
+console.log('or', t || f);//true 두 피연산자 중 하나 이상이 참이어야 참 (논리 OR 연산)
+console.log('not', !t);// 참/거짓 값을 바꿈 (true->false, false->true) (논리 NOT 연산)
+
+
+*조건문 / if문
+if(조건){
+    실행문
+}else if(조건){
+    실행문
+}
+
+*반복문 / while문과 for문
+while : 특정 조건이 참일 경우, 계속 반복하는 반복문 = while (표현식) {실행문}
+let w = 0;
+while (w < 10) {
+    w++;
+    document.write("w는 " + w + "<br>")
+}
+// 탈출할 길이 없어서 무한 루프에 빠짐
+/* let w2 = 0;
+while (w2 == 0){
+    console.log(w2);
+} */
+let w3 = 0;
+while(true){
+    if(w3 >= 10){
+        break; // 멈추다, 탈출하다
+    }
+    w3++;
+    console.log(w3);              
+}
+for : 특정 횟수만큼 반복하는 반복문 = for (초기식; 표현식; 증감식) {실행문}
+for(let i = 0; i < 10; i++ ){
+    console.log(i + '의 제곱은 ' + i ** 2);
+}
+
 
 
 

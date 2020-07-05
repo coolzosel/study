@@ -1,0 +1,1057 @@
+JAVA
+
+2020.03.30 
+
+학습내용
+1. 개발환경 셋팅
+  -1.JDK 설치
+	: jdk path 설정 필수
+  -2. eclipse 설치
+
+2. 자바 소스 개발 단계
+  -1. 소스 개발
+	파일명.java
+  -2. 컴파일
+	실행을 위한 소스 변환(파일명.class)
+	명령어 - javac 파일명.java
+  -3. 실행
+	파일명.class 실행
+	명령어 - java 파일명
+
+
+자바 패키지 생성 시, 소문자로만 작업 권장!
+자바 클래스 생성 시, 첫 글자는 대문자 권장!
+퍼블릭 스태틱 체크하고 완료.
+
+ctrl + F11 = 데이터 활용
+ctrl+D = 삭제 단축키
+syso, ctrl+space = System.out.println(); 자동 완성
+
+타입 변수명 = new 생성자();
+ex) Actor a = new Actor(); 
+>>a라는 액터 변수타입 생성
+
+
+자바소스 구성요소
+*.java
+package 폴더 내부에 
+import 선언
+class 프로그램명 {//클래스명, file.java
+변수 : 데이터
+생성자 (필수)
+메소드 : main 메소드, 사용자정의 메소드, libray(API) 
+}
+
+로컬 변수는 선언해서 메모리 생성 / 멤버 변수는 생성자로 호출 후 객체 만들어서 선언, 메모리 생성
+
+
+로컬 변수
+1. 선언 위치가 메소드 또는 생성자 내에 선언
+2. 사용 영역 : 선언된 메소드 또는 생성자 내에만 사용 가능
+3. 선언 시 값을 초기화하지 않을 경우 멤버 변수와 달리 자동초기화가 안됨
+	- 해결책 : 로컬 변수 사용 전에 반드시 초기화 선행 필수
+4.객체 생성이랑 무관하게 메소드 호출 후 사용
+
+멤버 변수(객체지향)
+-class 중괄호 바로 하위에 선언되는 변수
+-생성자로 호출 후 객체 생성으로 선언
+-로컬에 비해 효율적
+-변수의 디폴트값 int(숫자) = 0, string(문자) = null
+
+
+메소드의 용도 : 데이터 가공, 연산, 검증 등.. 다양한 기능을 구현하는 요소
+
+메소드 수행 시  
+들어가는 데이터를 인풋(파라미터), = 여러개
+수행 후 반환되는 데이터를 아웃풋(리턴 밸류) = 하나일수도, 없을수도 있음
+이라고 함.
+
+메소드 구현 문법
+-리턴타입 메소드명([parameter 또는 argument]){
+	로직
+	[return 값];
+      }
+
+파라미터를 int로 넣고 리턴을 string으로 받고 싶을 땐, 
+return값에 string값을 앞에다 섞어주면 됨 (ex. "" + int1 + int2)
+>결합연산자(데이터결합)
+
+
+
+2020.03.31
+
+F2 = rename(이름바꾸기)
+
+메소드 실행 시 필요한 데이터 : parameter or argument
+메소드의 결과 값을 이 메소드를 호출한 곳으로 반환 : return
+
+*숫자 받고 내 이름을 숫자랑 결합(데이터 결합)
+*
+	String getValue(int v) {
+		return v+"이정화"; // 리턴 값에 문자열 넣어주면 됨(불변값도 해당)
+	}	
+	public static void main(String[] args) {		
+		Method3 m = new Method3(); // 메소드 호출/생성
+		System.out.println(m.getValue(5)); //출력
+	}
+>계속해서 변하는 값(가변 값)은 소괄호에 넣어주고 불변 값은 return에 넣으면 됨
+>parameter(가변데이터)
+
+
+*파라미터 숫자가 같은 값일 경우 문자열 "true", 다를 경우 "false"로 반환
+	String equalsInt(int x, int y){		
+		if(x==y) {
+			return "true";
+		}else {
+			return "false";
+		}
+	}	
+	public static void main(String[] args) {		
+		Method3 m = new Method3();
+		System.out.println(m.getValue(5));
+		
+		System.out.println(m.equalsInt(20,20));
+		System.out.println(m.equalsInt(20,10));		
+	}
+
+의사 코드 = 말로 하는 코드 = 설계 코드(ex. if문과 같은 조건식 등등..)
+
+if문 작성할 때 로직이 한 줄이라면
+	if(x==y){
+		return "true";
+	else
+		return "false";
+	}
+위와 같이 중괄호를 더 안 쓰고 끝낼 수 있음.
+
+
+JavaEE 아키텍쳐(구성)
+-Client machine: html/css/java script
+-JAVA EE 서버: java -> Spring framework
+-DB 서버: mysql & oracle & maria DB ... NoSQL(비정형데이터)
+
+자바를 실행만 하려면 jre, 개발도 하고 실행할거면 jdk
+>jre(Java Runtime Environment) / jdk(Java Development Toolkit)
+jre - JVM+API(어플리케이션 프로그래밍 인터페이스)
+
+자바 sw개발 프로세스
+>javac MyProgram.java -(컴파일러)-> MyProgram.class -> java MyProgram(실행)
+
+자바 플랫폼 2가지 구성요소
+-java API(다른 곳에서 받아다 쓰는 거/연동)
+-자바 버추얼 머신(운영체제가 달라도 실행되게 하는 핵심 기능)
+
+
+<객체 지향 언어의 장점>
+-기업 관점 : 비용 절감 / 개발자 관점 : 개발 및 유지보수 good
+-재사용성
+-유지 보수 & 확장성
+>객체 지향 언어에는 자바, C#, ruby, 파이썬...등등 다양하다
+
+객체 생성과정으로 만들어진 실제 메모리에 사용 가능하게 생성된 대상을
+*Instance(인스턴스)*라고 부름 = instance는 object와 같은 의미
+
+로컬변수 - 메소드 생성 시 자동생성, 메소드 종료 시 자동삭제 / 자동초기화X
+멤버변수 - 자동초기화O
+
+>로컬 변수는 메소드 내에서만 사용, 소멸이 되기 때문에 자기가 선언된 메소드가 아니면 호출불가! 
+
+로컬 변수는 
+자기가 선언된 메소드 내에서만  생성, 소멸되기때문에
+메인 메소드로 불러와서 쓰고 싶다면,
+메인 메소드에서 메소드를 호출하는 방법 밖에 없다.
+=멤버 변수는 클래스 내에서 계속 유지가 됨
+
+반환 값이 없는 메소드는 void라고 선언.
+(ex.)
+void setName(String name){
+	this.name = name; //this는 멤버 변수와 구분키 위해 쓴 것.
+} // 파라미터 有, 반환 無
+String getName(){
+	return name;
+} //파라미터 無, 반환 有
+
+<변수>
+1.선언 위치에 따른 구분
+	1. 멤버 변수
+	2. 로컬 변수(=임시 변수)
+2.타입에 따른 구분
+	1. 기본 타입 : 내장된 타입 (8가지뿐, 디폴트 값은 순수 값을 가짐)
+	2. 참조 타입(=객체 타입, reference 타입, class 타입/다 같은 말)
+	   >class를 기반으로 참조, 갯수는 무한대 생성 가능
+	   >참조하는 class의 객체를 참조(관리)하는 것
+	   >디폴트값은 객체 값 or 주소 값 or null 값
+
+다른 패키지에 있는 클래스를 가져오고 싶을때는
+import 패키지명.클래스명; // 입력해서 지정
+>>클래스명에 컨트롤+마우스왼쪽 클릭하면 해당 클래스로 이동됨
+
+
+VO pattern(Value Object pattern : 데이터 표현용 클래스)
+-멤버 변수/기본생성자/getXxx()/setXxx() 메소드로 구성
+데이터 = 도메인
+
+<참조타입>
+참조 타입은 다른 패키지의 클래스를 가져와서 참조하는 것.
+타입, 변수 앞에 pulic 있는 건 어디든지 호출 가능, 
+but 없으면 속해있는 패키지 말고는 호출 불가
+
+
+int는 32bit의 정수값 표현 가능, 양수/음수 포함된 데이터 타입
+> 음수는 표현하지 않고, 1 이상만 표현되게 하고 싶을 땐 어떡해?
+∴ 유효한 데이터만 저장 가능한 유효성 검증 로직 추가해서 해결
+(ex)
+public void setAge(int age) {//로컬 선언
+      if(age > 0) {
+         this.age = age;
+      }else {
+         System.out.println("너 뭐하니? 유효한 값을 넣어줄래?");
+      } // 1이상의 값이 아닌 값이 표현되면 위와 같은 문자열 출력
+   } 
+
+
+
+2020.04.01
+
+1.변수 타입 습득 & 응용
+	- 기본 타입, 참조 타입
+2.메소드 구현 응용
+	
+1번학습
+-기본타입 / 변수타입 학습 
+-변수 타입별 기본값
+
+
+<서로 다른 변수 타입간의 형변환>
+-기본적으로 서로 다른 타입 간은 호환 불가(대입X)
+-단, 기본 타입간에는 크기가 허용되는 범주내에서 변환 가능
+-예외 : boolean은 어떠한 타입으로든 변환 불가
+-형변환 = type casting (up casting & down casting)
+-rule : size를 기준으로 형변환하는 문법
+	큰 사이즈 변수 = 작은 사이즈 타입의 값;
+	작은 사이즈 변수 = (작은사이즈타입)큰 사이즈타입의 값;
+
+문자형을 정수형으로 변환할 시, ACSII(아스키코드)로 숫자가 뜸!
+(반대 경우도 마찬가지, 정수형을 문자형으로 변환하면 그에 해당하는 문자(ACSII)가 뜸)
+
+ctrl+/ = 주석 단축키
+
+<좋은 코딩 습관>
+1.데이터 표현용 클래스에는 기본 생성자 꼭 추가
+2.로컬 변수들은 자동 초기화X, 그러므로 가급적 선언 시 값을 명시적으로 초기화
+
+2번학습
+주요키워드
+-static : 객체 생성하지 않고 변수&메소드 호출 가능한 방법 제공
+기능
+-1.멤버변수 : 객체 생성X, 멤버 변수 사용. 즉, 호출하는 유일한 방법
+-2.메소드 : 객체 생성하지 않고도 메소드 호출할 수 있는 문법 제공
+(원래는 객체없이 메소드 호출 불가)
+
+static을 붙이면, 객체 생성 없이도 바로 호출 가능!!!
+
+데이터/멤버변수가 없는 클래스는 객체 생성 의미가 크게 없음.
+단, 메소드 호출을 객체 생성하지 않고 사용 가능하게 하려면 static으로 선언
+
+API 활용하기
+https://docs.oracle.com/javase/8/docs/api/
+>java.lang 클래스에서 메소드 검색해서 사용
+
+static double	max(double a, double b)
+Returns the greater of two double values.
+>파라미터로 더블 값2개 받아서 둘 중 큰 더블값 하나로 반환한다는 문법
+
+호출할떄는 
+Math.max(a,b); // 이렇게 클래스명.메소드명();으로 호출하면 됨 짱효율적!!
+//외부 클래스의 static 메소드 호출 시, 반드시 class명.메소드([..]); 
+
+
+3번학습
+int - 기본 타입임, 따라서 클래스 아님 : 변수, 메소드 없음
+java.lang.Integer - 클래스 : 변수, 메소드 있음
+위 두개의 차이
+-기본 타입과 클래스 타입이 다르지만 경우에 따라 
+정수 기본 타입 관련된 기능 처리시에 유용한 메소드 제공
+
+
+객체만이 보유한 데이터값 가공을 해야하는 메소드들은 static으로 처리해서는 안됨
+>데이터값(파라미터)을 불러온 다음 가공하는 메소드를 포함
+--이건 나중에 다시 공부해서 정리하기..ㅠㅠ--
+
+
+API에서 java.lang은 유일하게 import하지 않아도 쓸 수 있는 패키지.
+
+System.out.println(i);
+System : java.lang.System 클래스
+out : 변수
+println() : 메소드 
+>>소괄호 없이 호출하는 건 변수, 소괄호로 호출하는 건 메소드
+
+미션
+1.오늘 배운 내용 review
+2. static 메소드 하나 구현
+3. non-static 즉 static이 아닌 메소드 하나 구현
+4. 로직 자유
+
+
+4번학습
+1.API 활용연습
+2.java.lang package
+-String, System, Integer, Math
+-Integer : static int parseInt()
+-String : char charAt()
+-System : static PrintSteram out
+-Math : static double max()
+
+인티져 복습하기(변환메소드)
+
+if문 공부도 했는데..
+
+
+
+2020.04.02
+
+(과제 코드리뷰)
+피드백 : if문 쓸 때, else에도 중괄호 꼭 넣어주기! 일관성 있게 코딩하자(★)
+
+
+학습내용
+1.api 활용(난이도 어려워질거임)
+2.배열
+3.System.out.println()
+
+<Dot 활용법>
+객체 속의 객체 속의 변수 출력
+>객체명.객체명.변수명();
+
+*주의사항! 클래스 만들 때, 같은 패키지 내에 똑같은 이름의 클래스 생성 불가.
+WHY? 이미 있으니까! (window내에 같은 이름의 file명이 생성될 수 없는 거랑 똑같음)
+
+*생성자는 객체 생성시 호출되는 필수요소
+-미 구현시 컴파일 시점에 기본 생성자가 자동 생성
+-생성자가 실행완료를 의미한다는 건 객체 생성을 의미
+
+*아래 문법에서 객체 생성의 순서? s -A - B - C 
+class A{ String s = "쌍따옴표만으로 자동 객체생성" }
+class B{ A a = new A(); }
+class C{ B b = new B(); }
+main{ C c = new C(); }
+>WHY? 객체 생성은 보유하고 있는 모든 멤버들이 '문제 없이 완벽하게 다 구성'이 된 후 생성
+>그러므로, C가 생성되려면 B가 생성되어야 하고, B가 생성되려면 A가 생성되어야 함.
+>String도 객체이기 때문에 s>A>B>C 순으로 객체 생성 
+>String을 '먼저' 쓰기 위해 A에 포함된 것이니 위의 순서가 정확함.
+
+<리펙토링>
+-기능은 동일하나 더 개선된 형식의 코드로 변환하는 작업을 의미
+-리펙토링 시, static으로 메소드 처리하면 객체 생성하지 않고 짧은 코드로 큰 효율 낼 수 있음 
+
+
+<Array(배열)> = []
+-다수의 데이터를 하나의 변수로 관리하는 구조
+-동일한 타입의 다수 데이터를 관리하는 저장소
+-다수의 데이터 관리는 고유한 index를 가짐(index 시작은 0)
+-모든 생성되는 배열에는 length라는 변수가 자동 생성
+	> 생성된 배열의 크기 값을 보유한 변수
+
+*Array 문법
+1.배열 객체 생성, 초기화(값 대입)가 동시에 하나의 문장
+	- String s = "Ee";
+	- int [] i = {1, 2, 3}
+
+2.배열 변수 선언> 배열 객체 생성> 데이터 초기화
+	- String S = new String("Ee");
+	- int [] i;
+	  i = new int[3]; // 3개의 메모리 생성
+
+>참조 타입을 객체 생성해서 사용!!!
+>객체 생성 문법 : new 생성자([ . . ])
+>>new 생성자 문법이 아니어도 단순 데이터 표기법만으로 자동 객체 생성 = String
+    : String s = "이거 객체 생성된거임!"
+
+*참조 타입이여도 new 없이 데이터표기법만으로 객체가 되는 타입 2가지
+1. String = " "
+2. 배열 = { 값1, 값2, 값3, . . }
+
+*배열을 파라미터에도 넣을 수 있음!
+
+<하나의 문장을 배열로 만들기>
+String str = "쪼개고,싶은,문장";
+String [] s = str.split(","); // ","을 기준으로 스플릿하다(나누다)
+System.out.println(str.split(",")[2]); //디펙토링, 이런식으로 나타낼 수도 있음
+
+----------------------------------------------------------------------------------------
+
+ctrl + shift + o = 자동으로 임폴트 생성/삭제
+
+<반복문(Loop)>
+1.for문 : 정해진 반복 횟수일 경우 권장
+2.while문 : 무한 반복 or 반복 횟수를 잘 모를 때 권장
+	>1번과 2번은 조건식이 true일 경우만 반복(실행)
+3.do while문 : 한번 이상 무조건 실행 시 권장
+	>무조건 실행 후 조건식 검증하는게 특징
+
+**반복문 문법
+for(초기치; 조건식; 증감식){
+	조건식이 true인 경우 실행되는 block
+}
+ 
+while(조건식){
+	true인 경우 실행
+	증감식;
+}
+
+초기치;
+do{
+	실행문장
+	증감식;
+}while(조건식);
+
+
+"\t" = 탭키처럼 여백 만들어주는 특수기호
+System.out.println(); //줄바꿈하는 출력
+System.out.print(); //줄바꿈없이 출력
+
+
+
+2020.04.03
+
+학습내용
+1. API 활용
+2. 배열응용
+3. MVC pattern
+
+
+작업할 때 수시로, print로 확인해주기(변경 전, 변경 후)
+작업이 끝나고 실제로 사용할 땐 print 삭제
+
+"\n" = 줄바꿈 특수기호
+
+<for each문>
+for(새로운변수 : 참조변수){[ . . ]} // 여기서 세미콜론은 끝, "콜론은 유지"를 의미
+>참조변수에서 데이터를 뽑아 새로운 변수에게 대입
+
+
+실습문제 - crud
+데이터(도메인) : 기자
+이름 / ??? ... (분야)
+
+제약조건 : 3명의 기자값을 배열에 저장(create), 출력(read), 수정(update), 삭제(delete)
+클래스 : step04.apply
+Step01Data.java : 3명의 기자값을 배열 저장
+Step01View.java : 출력메소드
+Step01Test.java :
+
+
+배열 저장, 출력, 수정, 삭제 이해하기
+
+수정은 수정할 값 대입,
+삭제는 null 값 대입
+
+StringBuffer에는 객체의 내용값을 문자열로 반환
+append / 기존 데이터에 새로운 데이터 추가
+
+====
+주말 과제
+1. 모든 소스 리뷰하기
+   - 1주일 분량 수업 내용 다 학습
+2. 본인이 리뷰가 되면 최소량의 TotalReview.java를 만들기
+   - 주제 : 알아서 하기, 나 스스로..이 문법과 내용을 응용하고 싶다..
+   관점에서 스스로 선정하셔서 작은 프로그램 만들기
+
+
+2020.04.06
+
+ 학습내용
+1. static 학습 마무리
+2. 상속 & 다형성
+	- API 활용 극대화 & 응용에 필수인 기초 소양
+3.
+
+
+<JVM의 메모리 구조>
+Method Area(Class Area)
+-클래스내용(바이트코드)
+-static 변수 및 상수
+
+Stack Area
+-메소드 실행 공간(메소드 프레임)
+-로컬 변수
+
+Heap Area
+-생성된 객체 저장
+
+<static>
+객체 생성X 클래스만으로 호출 가능
+실제 사용 가능하게 생성되는 시점?
+	> 바이트 코드가 메모리에 로딩(저장)되는 시점(한 번 자동생성)
+생성된 객체들끼리 공유함
+
+**주의사항 : static을 쓸 때 메모리가 공유되기 때문에 신중하게 사용
+>> static 변수를 사용할 땐 하면 됩니다.
+
+
+<MVC 패턴>
+Model - 자바 (데이터)
+View - jsp / html (눈에 보이는)
+Controller - (제어/안내)
+
+
+singleton pattern : 객체 수를 서버 상에 강제적으로 하나만 보장
+> 하나의 객체로만 보장, 객체 수에 대한 조절 필요할 때.
+>1.멤버 변수/2.프라이빗 생성자/3.호출가능하게 주소값만 가져가는 수정 불가능 메소드
+private DataPublic() {}
+public static DataPublic getInstance() {
+	return instance;
+}
+-----------------------------------------------------------------------
+
+<private>
+외부에 호출 불가
+
+
+**없는 메소드를 더블 클릭하면 알아서 자동완성해서 메소드 생성해줌
+**패키지도 이런식으로 동일하게 생성가능(선 선언 후 생성/역순으로 생성)
+
+
+2020.04.07
+MVC패턴 실습 위주로 진행함
+
+
+2020.04.08
+스스로 MVC패턴 짜기
+
+<영화 예매 시스템>
+피드백 내용 : 출력문은 웬만하면 앤드뷰로 넘길 것!
+컨트롤러는 로직 실행하는 부분이니 실제로 보이는 뷰에다 설정하는게 좋다
+(역할 구분 확실히)
+>>해결책 : 각 로직에 해당하는 새로운 뷰(앤드뷰에 만들어서 설정하기)
+
+학습 내용
+1. 상속과 다형성
+   - java.lang.Object는 최상위 root
+   - 예외는 없다(사용자 정의 클래스 포함)
+2. 상속
+   - 이미 존재하는 클래스를 재사용하는 확장성을 고려한 메카니즘
+   - 관계
+      실생활 속에서 그대로 투영
+      조상 - 부모 - 자식(자손)
+   - 부모로부터 변수와 메소드를 상속받아서 자식 클래스에서 사용
+   - 단지 부모가 상속해주는 메소드 중 로직을 그대로 상속 받는게 있고
+   메소드 로직의 일부를 수정하는 경우가있음
+   이렇게 수정하는 메소드 : 메소드 재정의(overriding)라고 함 
+   - 실세계 : 조상님 존재 후 부모님 존재하신 후 자식(자손) 존재 
+   - 자바 객체 : 조상객체 - 부모객체 - 자식(자손)객체 생성 순
+   
+3. 다형성
+   - 상속이 전제되는 구조상에서만 적용할 수 있는 메카니즘
+   
+*복사-붙여넣기보다 더 좋음, 상속되기때문에 수정하면 자동으로 변경됨
+
+API - java.lang.object (최상단 클래스, 뿌리) = 절대 불변
+BUT 상속받고 메소드 재정의하면 오브젝트도 불변에 예외없다.
+
+<super>
+상속받는 메소드의 로직을 100% 그대로 반영하는 키워드(재정의할 때 유용!)
+
+/** API 문서 만들듯이 주석 작성할 내용 */ = API 자바 도큐먼트 생성
+
+<상속 문법>
+class 클래스명 extends 부모클래스명{ [..] }
+
+
+<다형성>
+: 많은 형태를 보유할 수 있다는 뜻
+부모/조상 타입의 변수는 자식(자손)타입의 객체를 대입받음
+>Object 타입 = 모든 객체/변수 타입을 수용함
+>변수를 Object로 할 경우 참조타입이기만 하면 죄다 출력 가능(다형성 반영)
+(ex)
+//new String(), new Integer(), new Child()
+//위의 데이터 세 가지를 배열 하나에 저장하려 함, 각자 다른 타입을 수용하려면?
+
+Object [] v = {new String("e"), new Integer(3), new Child()};
+//오브젝트 변수를 사용하면 됨
+---------------------------------------------------------------------------------
+- 기본 데이터 타입간의 형변환은 타입의 사이즈가 기준.
+- 객체/참조 데이터 타입간의 형변환은 레벨이 기준 ! (★)
+	조상(부모) 타입 = 자식객체; = OK
+	자식(자손) 타입 = 부모타입; = NO
+	자식(자손) 타입 = (자식)부모타입; = 이렇게 해결!
+	Parent p = new Child(); = OK // upCasting : 자식이 부모타입으로 자동흡수
+	Child c = (Child)p; = OK // downCasting
+
+
+2020.04.09
+
+API 활용하기
+
+<ArrayList> = ArL 자동 완성 키워드
+실시간 가변적인 데이터 수 만큼 저장 및 활용, 삭제 등에 유용한 타입
+배열과 흡사하나 배열은 고정사이즈, 메모리 개수 변경 불가능
+
+- 객체 타입(참조)이면 모두 다 저장 가능(오브젝트 타입임)
+데이터 저장 기능 : public boolean add(Object o){}
+
+>>ArrayList를 출력할 때 주소값이 안나오고 저장된 객체가 출력됨
+>>즉, 객체가 출력되도록 투스트링 메소드가 재정의되었단 얘기
+
+ArrayList에 index가 0, 1 두 개가 존재한다고 가정할 경우
+index 0번을 삭제하면 1번 index가 0번 index가 됨
+
+[ex. 객체 속의 객체]------------------------------------------------------------
+class Shop{
+     Customer c = new Customer("vip", "siat", 11); //c라는 Customer객체 생성
+     ArrayList al = new ArrayList(); //al라는 ArrayList객체 생성
+     Shop(){
+	a.add(new Customer("vvip", "people", 22);
+	//al라는 ArrayList안에 Customer객체 생성/저장
+     }
+}
+pulic class Test {
+     public static void main(String[] args) {
+	Shop s = new Shop; // s라는 Shop객체 생성
+	//이 때, c를 al에 저장하려면 어떻게 해야 될까?
+	s.al.add(s.c); // s의 al에 s의 c를 추가한다
+	System.out.println(s.al.get(1)); // s의 al index 1번을 출력한다0
+	System.out.println(s.al); // s의 al를 출력한다(ArrayList객체)
+}
+---------------------------------------------------------------------------------
+
+<java.util.ArrayList>
+- 객체만 저장 가능
+- index로 데이터 관리
+     >자동으로 빈자리 메꿔줌
+     >중간 데이터를 실시간으로 삭제하면, performance는 느림
+- 동적메모리
+     >첫 생성 시 10개의 메모리 즉 index 0~9까지의 ArrayList가 생성
+     >11번째 데이터 저장 시 10개를 새롭게 추가 생성
+     >메모리는 20개 데이터 수는 11개
+     >size()는 데이터 수인 11개를 반환
+
+ArrayList al = new ArrayList();
+System.out.println(al.size());// size는 저장된 데이터 개수 조회
+
+export - 제너럴 - 아카이브 (내보내기)
+
+
+
+
+2020.04.10
+
+학습내용
+1. 예외 처리 학습 및 적용
+
+<예외처리>
+     1. 개념 : 실행 시 발생 가능하나 코드로 사전처리 가능한 경우의 기술 의미
+     2. 분류
+	1. 컴파일 예외
+	 - 문법적인오류
+	 - ~Exception 이름으로 언급
+	 - 반드시 처리 코드 필수
+	2. 실행 예외
+	 - NullPointerException처럼 실행 시 발생되는 예외
+	   String s = null;
+	   문제 발생 S.o.p(s.charAt(0))
+	   해결책  s = "siat";
+		S.o.p(s.charAt(0));
+
+<static{}>
+main보다먼저 실행되는 중괄호
+우선권을 주고싶다면 스테틱 중괄호 사용
+모든 user들이 공유하는 자원을 단 한번 초기화시 권장
+단 한번만 로딩(클래스가 처음 로딩될 때, 실행도 단 한번만)
+필요시마다 호출 불가능
+
+
+<try~catch> 
+Class.forName("메모리에 로딩하고자하는 class명")
+:예외처리 문법 미 적용시 컴파일 예외 발생
+>해결책 : class명 오타 여부를 떠나서 try~catch 문장 코딩 필수★
+-경우의 수
+1. 정상 실행 - 로딩완료
+2. 비정상 실행 - 로딩실패
+
+<forName()>
+- API
+- 사용 시 경우의 수 : 클래스명 오류 발생
+- 견고하게 제공 시에는 다양한 처리 가능하게 제공
+- 중요
+> 문제 발생 시 시스템 종료로 방치가 아닌 유연한 실행 가능하게 유도
+> 즉 처리코드 실행 후 다른 로직이 정상 실행되게끔 대처
+: 적용 문법 exception handling 문법
+
+
+<finally>
+try~catch다음에 오는 옵션 문법
+예외발생 여부 상관없이, 반드시 실행되는 문법
+자원(시스템) 반환하는 로직은 가급적 이 블록 내부에서 개발
+
+[exception 종류]
+1.컴파일 계열의 exception
+    java.lang.RuntimeException과 무관
+    try~catch 처리 문장을 미적용 시 컴파일 자체가 안됨
+2.실행 계열의 exception
+    java.lang.RuntimeException의 자식,자손 클래스들
+   컴파일과 무관, 무조건 컴파일 정상으로 인식
+   실행 시에 값들의 무효함으로 발생!
+   배열의 index 범위에 실수 ArrayIndexOutOfBoundsException
+   0으로 나누기 - ArithmeticException
+   null인데 변수, 메소드 호출 - NullPointerException
+
+[exception 처리 방식 두 가지]
+1. try~catch로 바로 처리
+2. 메소드 선언구에 throws로 Exception 호출한 곳으로 처리 위임
+
+MVC패턴 응용
+StartView -> Cotroller(요청/제어) -> Service(위임받은 요청 처리) -> 응답결과에 따라 EndView or FailView 출력
+(model)
+
+
+
+2020.04.11
+
+<제네릭>
+ArrayList<>  = new ArrayList<>();
+<>부분을 제네릭이라고 함
+타입 지정해주는 것.
+ex. ArrayList<String> str= new ArrayList<>();
+//String 타입을 가진 ArrayList 생성
+
+mvc 패턴 제네릭 활용/응용
+
+<Map>
+HashMap : 순서상관없이 고유키 지정해서 데이터 저장하는 코드
+(순서가 중요하면 인덱스로 관리하는 거 쓰면 됨=Array, ArrayList)
+HashMap<String, String> m =new HashMap<>();
+>>String 키를 가진 String타입의 맵
+
+
+
+2020.04.12
+
+<Set>
+인덱스나 키를 사용해서 관리하지 않으며 저장 순서 보장X
+중복데이터 불허(★)가 Set의 특징!! (중복데이터면 덮어씌우게 됨)
+하나의 데이터만 뽑아내는 건 없는 대신
+contains("오브젝트 o"): 데이터 하나만 검증
+isEmpty(): ture와 false로 검증(데이터가 있으면 f 없으면 t)
+
+<Iterator>
+"Set"들을 관리할 수 있게하는 객체/메소드
+Iterator i = s.iterator();
+     while(i.hasNext()) {
+          System.out.println(i.next());//반복문안에서 다음데이터 출력
+     }
+
+<Collections.sort()>
+정렬하는 코드
+
+<Comparator>
+비교하는 코드
+new Comparator<타입>(){[ . . ]}
+문법 구현과 동시에 객체 생성되는게 특징
+이름이 없음(익명)
+>>매우 특이한 성질을 갖고 있음
+
+<compare>
+독특한 메소드
+값끼리 서로 비교해서 값 반환(알고리즘)
+>>알고리즘 포크댄스 보는 것도 도움됨!
+
+
+<IO / 데이터입출력>
+버퍼리더 
+버퍼리터
+
+
+
+2020.04.16
+
+<DB연동>
+cmd창에서 
+
+sqlplus system/manager
+
+@D:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\scott.sql
+
+show user
+// SCOTT이라는 유저이름 확인
+
+select *from DEPT;
+
+select *from EMP;
+
+//연결했기때문에 검색도 할수있고 실행가능하며
+//sql 명령어 내릴 수 잇음
+--------------------------------------------여기까지 cmd창
+
+JDBC 보면서 참고
+
+
+
+2020.04.17
+
+<DB연동 응용>
+
+cmd 창에서 결과출력을 좀 더 정리되게 보고싶으면
+set linesize200
+입력해서 글 간격 셋팅
+
+
+
+DAO는 그냥 MySql 같은 DB에 접근하게 해주는 Object 즉 Connection conn=DriverManager.getConnection(DB_URL,USER,PASS); 을 포함해서 DB에 관련된 data를 CRUD(create read update delete) 하게 해주는 Object가 DAO 이고 이때 기본적으로 저장되고 하는 data를 DTO라고 생각하면 될거 같다. 그러니까 database의 학생의 정보를입력한다 하면, 이름따로 입력하고 학번 따로 입력하고 학과 따로 입력하고 이러기에 귀찮으니까 , DTO 학생=(이름,학번,학과) 로 한번에 이동시킬 수 있다. 
+
+<다중정의 메소드>
+하나의 메소드를 여러개로 정의하는 것(파라미터가 다름)
+
+
+
+2020.04.20
+
+학습 내용
+
+1. 기본 타입과 참조 타입 주요 API
+   - 기본 8가지를 support 해주는 클래스
+   - byte : Byte
+   - float : Float
+   - int : Integer
+   
+2. 용도
+   - 자료구조 클래스들 주요 특징
+      객체 타입의 데이터만 저장 및 활용
+      : 기본 타입은 저장 및 활용 불가 
+      - 해결책 : 기본값을 객체 타입으로 변환해서 저장 및 활용 
+      3이라는 int값을 Integer로 변환해서 저장 및 활용
+      
+3. autoboxing & unboxing
+   1. autoboxing이란?
+      - Integer i = 3;
+      Integer라는 참조 타입의 변수 i에게 기본값 3을 대입
+      기본 타입의 데이터가 참조타입으로 자동 변환되는 개념 
+      Integer i = new Integer(3)으로 자동 변환
+      
+   2. unboxing 이란?
+      int i = new Integer(3);
+      기본 타입 변수 i에게 객체 타입을 기본타입으로 변환해서 대입
+      int i = new Integer(3).intValue();
+      
+   3. 예
+      Integer m(){//메소드 호출 결과는 Integer 타입의 객체
+         return 3;
+      }
+
+
+
+<properties확장자 파일>
+한글을 쓰면 유니코드로 자동변환됨
+
+
+
+
+2020.04.21
+
+<서버>
+톰캣8.5깔고
+뉴-아더-서버-아피치-톰캣8.5
+
+[serverLifeCycle]
+생성자(서블릿객체) 딱 1번 호출
+ex)클라이언트 100명, 생성자 1개일 경우 !
+    서블릿 객체는 하나지만 모든 클라이언트에 대한 응답/처리가능
+
+<doGet()>
+서버호출 시 자동 호출, 필수 메소드
+접속한 클라이언트 수만큼 호출
+
+Response - 접속한 클라이언트  / Request - 입력한 정보 보유(클라이언트에게 전송)
+
+html에서 servlet을 실행하려면(브라우저), servlet의 매핑값을 html의 action값에 넣어준다.
+
+2020.04.22
+
+<한글인코딩방법>
+-응답데이터
+	 response.setContentType("text/html;charset=euc-kr");
+-요청데이터
+	get방식은 server.xml에 설정 정보추가 // 63라인에 URIEncoding="euc-kr"
+	post방식은 순수 api로 처리가능 // request.setCharacterEncoding("euc-kr")
+
+
+<get과 post>
+get방식
+  1. 데이터검색용
+  2. 즐겨찾기용도
+  3. 주소줄에 데이터 표시된 상태로 서버 전송
+post방식
+  1. 데이터 저장 및 수정용
+  2. 서버에 전송하는 데이터 양 많을때 사용
+  3. 보안을 고려한 데이터 서버전송시 필수!(주소줄에 표시안됨)
+
+
+<redirect>
+클라이언트 -> html -> controller -(redirect)-> 클라이언트 -> view
+리다이렉트는 클라이언트 요청 다시 받아서 하는것 
+따라서 인코딩 재설정도 필수
+// 리다이렉트하면 그 전 데이터는 유지되지않음
+//url 변경, doGet()으로 응답하게 됨
+>>why? post로 지정해놓아도, 리다이렉트 하게되면
+>>클라이언트한테 재요청을 받는데, 이 때 디폴트값설정(doGet)로 받음.
+
+
+<forward>
+클라이언트 -> html -> controller -> view
+//데이터 쭉 유지하면서 뷰까지 넘김(연동개념)
+//url 유지, doPost(), doGet() 둘 다 가능
+
+
+2020.04.23
+<과제피드백>
+process 메소드는 공통로직이 있을때 생성,사용
+공통로직이 없다면 doGet/doPost메소드 둘 중 하나만 사용해도 됨
+
+<Cookie/쿠키>
+쿠키데이터는 다른브라우저에서 허용이 안된다면 호환불가.
+네임 값으로 데이터 구분함
+
+크롬-설정-쿠키및사이트데이터-모든쿠키및사이트데이터
+들어가서 로컬호스트로 쿠키확인가능
+*쿠키데이터는 제일 최근 것만 저장됨
+
+<Session/세션>
+
+
+
+2020.04.24
+<JSP>
+
+
+
+2020.04.28
+과제 리뷰 후, 나만의 코드로 만들어보기!(다른사람들거 리뷰해보기)
+
+[jsp action tag]
+<jsp:include page="*.jsp">
+페이지를 포함하는 태그(앞뒤페이지 다 포함해서 실행)
+
+<jsp:forward page="*.jsp">
+페이지 넘기는 태그(제일 최근 페이지만 실행)
+
+jsp파일에서 page자에서는 임포트속성만 쉼표(구분자)로 여러가지 넣을 수 있음
+
+<EL tag>
+key에는 한글데이터를 선호하지 않음, 비추
+
+<JSTL>
+
+2020.04.29
+<과제피드백>
+17~20라인에 있는 폼태그를 29라인 내부에 집어넣어서 활용해도 좋을듯(전송된 데이터 출력부분)
+>>"전송된 데이터 : [입력창]" 입력하고나면은 입력창 사라지고 데이터가 뜨게끔!
+
+<c:forEach> : 반복문(forEach) 종류
+단순반복)
+	<c:forEach begin="1" end="3" step="1"> // 1에서 3까지 1씩 증가
+		siat<br>
+	</c:forEach>
+
+반복속성)
+	<c:forEach begin="1" end="3" step="2" varStatus="status">//변수상태 "status"이름지정
+		${status.index}-siat-${status.count}<br> // 변수의인덱스와 반복문 카운트몇번 돌았는지 표시
+	</c:forEach>
+
+
+
+<c:choose>
+  <c:when test="${ }"></c:when> // if
+  <c:when test="${ }"></c:when> // else if
+  <c:when test="${ }"></c:when> // else
+  <c:otherwise></c:otherwise> // 모든 조건식이 false일때 실행
+</c:choose>
+
+
+
+<URL>
+
+
+
+2020.05.04
+<스케쥴> * 일정은 가변적일수 있음
+5.4 - servlet & jsp 마무리(응용력 향상)
+5.11 - 자바스크립트 + 비동기 // + 팀구성
+5.18 - vue.js
+5.25 - spring framework + spring boot
+6.1 - 파이썬 : 기초문법 + 데이터분석(크롤링) + 시각화 + 업무자동화
+------------
+project
+6.15주(4주간) 실제 시작 
+
+
+
+
+<오전 미션>
+1.환경셋팅 필수
+2.모든 소스의 인코딩설정 확인
+3.실행 확인
+4.제시된 로직의 소스 개선-> 정상실행
+5.JSTL & EL 위주로 jsp들을 개선
+
+
+2020.05.08
+<JSON>
+java <-> javaScript 간의 데이터 포맷
+
+<maven> : 라이브러리 자동저장소?
+프로젝트명 우클릭 - Configure - Convert to Maven Project 선택해서 finish 하면 pom.xml 생성!
+
+상단 카테고리 Window - show view - other - Maven - Maven Repositories 들어가면 메이븐 창 활성화
+>> Global Repositories 눌러서 하단의 central 우클릭 Rebuild index 누르면 메이븐이 정신차림
+
+
+2020.05.12
+<ajax / 비동기>
+xhttp.open("요청방식", "실행될 서버 프로그램명", true[비동기란 의미]);
+		  	
+*겟방식
+xhttp.open("GET", "ajax01Res.jsp?siat=test", true); // 데이터를 주소값에 포함시켜서 전송(주소?데이터)
+xhttp.send();
+
+*포스트방식
+xhttp.open("POST", "ajax01Res.jsp", true); // 주소만 입력
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //필수 설정 이거 빠지면 전송안됨★★
+xhttp.send("siat=testPost"); // 데이터를 요청함수에 따로 전송해서 보냄(겟방식과의 차이점!)
+
+
+2020.05.14
+
+공공데이터링크
+http://aihub.or.kr/
+http://data.go.kr
+http://data.seoul.go.kr
+
+인문학적 소양, 수학베이스, 분석능력, 개발능력 (★)
+갖추면 좋다좋다
+
+
+
+2020.05.18
+<Vue.js>
+{{ 키값 }} - 중괄호 두개짜리 랭귀지, 턱수염괄호라고 부름
+
+
+2020.05.19
+*컴퓨티드와 메소드의 차이점
+컴퓨티드는 적절한 시점에 알아서 연산 실행,
+메소드는 호출해야만 실행
+
+*watch
+-컴퓨티드와 유사하지만 와치는 '특정' data 변화에 따라 수행(컴퓨티드는 즉각 반응,실행)
+-그러나 데이터 연결이 되어있지 않으면 실행X 
+
+
+*JSON 데이터 포맷 검증사이트(포맷터)
+https://jsonformatter.curiousconcept.com
+
+
+2020.05.22
+다른서버의 데이터 받아오려면(연동) jsp에
+<%response.setHeader("Access-Control-Allow-Origin","*");%>
+사용해주기 ! 이거 하나면 접근권한 OKOK
